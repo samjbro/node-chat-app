@@ -41,6 +41,10 @@ socket.on('updateusers', (data)=> {
   });
 });
 
+socket.on('servernotification', (data) => {
+
+});
+
 $(function() {
   $('#data').keypress(function (e) {
     if (e.which == 13) {
