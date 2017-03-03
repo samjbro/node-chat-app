@@ -19,3 +19,12 @@ function askForName(s) {
 
 var name = getName();
 $('#data').attr('placeholder', 'send message as ' + name);
+
+$(function() {
+  $('#data').keypress(function (e) {
+    if (e.which == 13) {
+      var message = $('#data').val();
+      socket.emit('sendchat', message);
+    }
+  });
+});
