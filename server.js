@@ -22,6 +22,12 @@ io.sockets.on('connection', (socket) => {
     console.log(usernames);
     io.sockets.emit('updateusers', usernames);
   });
+
+  socket.on('disconnect', () => {
+    delete usernames[socket.username];
+
+    io.sockets.emit('updateusers', usernames);
+  });
 });
 
 server.listen(3000)

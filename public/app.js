@@ -36,7 +36,6 @@ socket.on('updatechat', (username, data) => {
 });
 
 socket.on('updateusers', (data)=> {
-  console.log({usernames: data});
   $.each(data, (key,value) => {
     $('#users').append('<div>' + key + '</div>');
   });
