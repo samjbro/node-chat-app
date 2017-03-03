@@ -3,7 +3,7 @@ import express from 'express';
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
-const usernames = [];
+const usernames = {};
 
 app.set('view engine', 'ejs'); // Sets ejs as view engine
 app.set('view options', { layout: false }); // Removes default layout
@@ -19,6 +19,8 @@ io.sockets.on('connection', (socket) => {
   socket.on('adduser', (username) => {
     socket.username = username;
     usernames[username] = username;
+    console.log(usernames);
+    io.sockets.emit('updateusers', usernames);
   });
 });
 

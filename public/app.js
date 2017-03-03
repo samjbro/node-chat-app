@@ -32,7 +32,14 @@ socket.on('connect', () => {
 });
 
 socket.on('updatechat', (username, data) => {
-  $('#conversation').append('<b>' + escaped(username) + ':</b>' + escaped(data) + '<br/>')
+  $('#conversation').append('<b>' + escaped(username) + ':</b> ' + escaped(data) + '<br/>')
+});
+
+socket.on('updateusers', (data)=> {
+  console.log({usernames: data});
+  $.each(data, (key,value) => {
+    $('#users').append('<div>' + key + '</div>');
+  });
 });
 
 $(function() {
