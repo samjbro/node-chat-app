@@ -1,1 +1,47 @@
-what whaaaaaat
+<html>
+  <head>
+    <title>Node Chat App</title>
+    <script src="/public/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/app.css" />
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Node Chat App</a>
+        </div>
+        <div class="collaps navbar-collapse">
+          <ul class="nav navbar-nav">
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="dashboard">
+        <div class="row" />
+        <div class="col-md-4">
+          <b>Users</b>
+          <hr />
+          <div id="users"></div>
+          <hr class="visible-xs visible-sm"/>
+        </div>
+        <div class="col-md-8">
+          <input
+              class="col-md-12 col-sm-12"
+              id="data"
+              placeholder="send message"
+          />
+          <hr />
+          <div id="conversation"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
