@@ -18,7 +18,15 @@ function askForName(s) {
 }
 
 var name = getName();
+
 $('#data').attr('placeholder', 'send message as ' + name);
+
+var socket = io.connect('/');
+
+socket.on('updatechat', (data) => {
+  // $('#conversation').append('<b>' + data + '</b>')
+  $('#conversation').append('<b>' + 'yooo' + '</b>')
+});
 
 $(function() {
   $('#data').keypress(function (e) {

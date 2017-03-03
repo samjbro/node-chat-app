@@ -10,4 +10,10 @@ app.use('/public', express.static('public'));  // Set this or the view won't loa
 
 app.get('/', (req,res) => res.render('index'));
 
-app.listen(3000)
+io.sockets.on('connection', (socket) => {
+  socket.on('sendchat', (data) => {
+    io.sockets.emit('updatechat', data);
+  });
+});
+
+server.listen(3000)
