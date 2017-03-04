@@ -36,13 +36,20 @@ socket.on('updatechat', (username, data) => {
 });
 
 socket.on('updateusers', (data)=> {
+  console.log(data);
+  $('#users').empty();
   $.each(data, (key,value) => {
     $('#users').append('<div>' + key + '</div>');
   });
 });
 
 socket.on('servernotification', (data) => {
-
+  if(data.connected){
+    if(data.toSelf) data.username = 'you';
+    $('#conversation').append('connected: ' + escaped(data.username) + '<br/>');
+  } else {
+    $('#conversation').append('disconnected: ' + escaped(data.username) + '<br/>');
+  }
 });
 
 $(function() {

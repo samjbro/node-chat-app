@@ -19,7 +19,16 @@ io.sockets.on('connection', (socket) => {
   socket.on('adduser', (username) => {
     socket.username = username;
     usernames[username] = username;
-    console.log(usernames);
+
+    socket.emit(
+      'servernotification', {
+        connected: true,
+        toSelf: true,
+        username: username
+      });
+
+    socket.broadcast.emit('servernotification', {connected: true, username: username});
+
     io.sockets.emit('updateusers', usernames);
   });
 
@@ -27,6 +36,8 @@ io.sockets.on('connection', (socket) => {
     delete usernames[socket.username];
 
     io.sockets.emit('updateusers', usernames);
+
+    socket.broadcast.emit('servernotification', {username: socket.username});
   });
 });
 
